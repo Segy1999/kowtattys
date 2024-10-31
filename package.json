@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://Segy1999.github.io/",
   "dependencies": {
     "@chakra-ui/react": "^3.0.0",
     "@chakra-ui/theme-tools": "^1.2.1",
@@ -51,7 +50,7 @@
     "build-storybook": "storybook build"
   },
   "gh-pages": {
-    "repo": "https://github.com/segy1999/segy1999.github.io.git",
+    "repo": "https://github.com/segy1999/kowtattys.git",
     "branch": "main",
     "message": "Automated deploy to GitHub Pages"
   },
