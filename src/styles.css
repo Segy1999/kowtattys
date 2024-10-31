@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Colors */
+@layer base {
+  :root {
+    --primary-color: #c89d7c;
+    --secondary-color: rgba(128, 120, 120, 0.493);
+  }
+}
+
+/* Remove unnecessary layer */
+/* @layer base {
+  .bg-primary-color {
+    @apply bg-primary;
+  }
+} */
+
+/* Background Image */
+.background {
+  background-color: whitesmoke;
+  @apply h-screen w-full bg-cover bg-center;
+}
+
+.background img {
+  @apply w-full h-full object-cover;
+}
+
+/* Add scrollable class */
+.scrollable {
+  @apply overflow-y-auto;
+}
+
+/* Navigation */
+.nav {
+  @apply flex justify-between items-center py-5 bg-transparent;
+}
+
+.nav ul {
+  @apply list-none flex justify-around space-x-4;
+}
+
+.nav ul li {
+  @apply flex-1 mr-4;
+}
+
+.nav ul li:last-child {
+  @apply mr-0;
+}
+
+.nav-btn {
+  @apply bg-primary text-white px-4 py-2 rounded-md w-full text-center hover:opacity-80;
+}
+
+/* Hero Section */
+.hero {
+  @apply flex flex-col items-center justify-center h-screen text-white;
+}
+
+/* Book Now Button */
+.book-now-btn {
+  @apply bg-primary text-white px-4 py-2 rounded-md;
+}
+
+/* Book Now Form */
+.book-now-form {
+  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md shadow-md w-4/5 max-h-[80vh] overflow-y-auto;
+}
+
+.book-now-form h2 {
+  @apply text-primary;
+}
+
+.book-now-form label {
+  @apply block mb-2 text-gray-600;
+}
+
+.book-now-form input,
+.book-now-form select,
+.book-now-form textarea {
+  @apply w-full p-2 mb-4 border border-gray-300 rounded-md;
+}
+
+/* Sections */
+.section {
+  @apply p-10 max-w-lg mx-auto;
+}
+
+/* Portfolio, About Us, and Policies Sections */
+#portfolio,
+#about-us,
+#policies {
+  @apply bg-primary border border-gray-300 rounded-md shadow-md;
+}
+
+#portfolio {
+  @apply bg-transparent border-none shadow-none text-center;
+}
+
+#portfolio h2 {
+  @apply inline-block bg-primary p-4 rounded-md text-white mb-5;
+}
+
+/* Contact Us Section */
+#contact-us {
+  @apply max-w-md mx-auto p-6 bg-primary rounded-md shadow-md;
+}
+
+#contact-us h2 {
+  @apply mb-4;
+}
+
+#contact-us input,
+#contact-us textarea {
+  @apply p-2;
+}
+
+#contact-us button[type="submit"] {
+  @apply bg-green-500 text-white px-4 py-2 rounded-md;
+}
+
+#contact-us button[type="submit"]:hover {
+  @apply bg-green-700;
+}
+
+/* About Us and Policies Sections */
+#about-us,
+#policies {
+  @apply max-w-lg mx-auto p-6;
+}
+
+#about-us p,
+#policies li {
+  @apply leading-relaxed text-white;
+}
+
+#policies ul {
+  @apply list-none p-0 m-0;
+}
+
+#policies li {
+  @apply mb-2 pb-2 border-b border-gray-300;
+}
+
+#policies li:last-child {
+  @apply border-b-0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #about-us,
+  #policies {
+    @apply m-4;
+  }
+}
+
+.typewriter-container {
+  margin-bottom: 50px; /* default margin */
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  .typewriter-container {
+    margin-bottom: 10px; /* smaller margin for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter-container {
+    margin-bottom: 5px; /* even smaller margin for very small screens */
+  }
+}
+
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 150;
+  font-style: normal;
+}
