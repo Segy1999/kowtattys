@@ -33,8 +33,8 @@ const Policies: FC = () => {
   ]);
 
   return (
-    <div id="policies" className=" oswald text-2xl section max-w-4xl mx-auto my-20 bg-[#c89d7c] p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl mb-4">Policies</h2>
+    <div id="policies" className=" oswald text-3xl section max-w-4xl mx-auto my-20 bg-[#c89d7c] p-6 rounded-lg shadow-md">
+      <h2 className="text-4xl mb-4">Policies</h2>
       <ul className="space-y-2">
         {policies.map((policy) => (
           <li 

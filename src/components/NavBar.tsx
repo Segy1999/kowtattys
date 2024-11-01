@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="text-2xl oswald bg-primary text-white py-4 md:py-6 lg:py-8 !bg-primary font-bold">
+    <nav className="text-4xl oswald bg-primary text-white py-4 md:py-6 lg:py-8 !bg-primary font-bold">
       <div className="container mx-auto flex justify-between md:flex-row flex-col !justify-between">
         <ul className="flex items-center space-x-4 md:space-x-8 lg:space-x-12 !space-x-12">
           <li>

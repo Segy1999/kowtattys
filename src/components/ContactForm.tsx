@@ -72,8 +72,8 @@ const ContactForm: FC = () => {
 
   return (
     <div id="contact-us" className=" oswald section max-w-lg mx-auto my-20 bg-[#c89d7c] p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl mb-4">Contact Us</h2>
-      <p className="mb-4">For any requests outside of a regular booking, leave a detailed message below.</p>
+      <h2 className="text-4xl mb-4">Contact Us</h2>
+      <p className="text-2xl mb-4">For any requests outside of a regular booking, leave a detailed message below.</p>
       
       {submitStatus === 'success' && (
         <div className="mb-4 p-3 bg-green-500 text-white rounded-md">
@@ -88,7 +88,7 @@ const ContactForm: FC = () => {
       )}
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className="text-2xl mb-4">
           <label htmlFor="contact" className="block text-gray-600 mb-2">
             Phone number or Email:
           </label>
@@ -107,7 +107,7 @@ const ContactForm: FC = () => {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="text-2xl mb-4">
           <label htmlFor="message" className="block text-gray-600 mb-2">
             Message:
           </label>
