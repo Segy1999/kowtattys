@@ -14,69 +14,72 @@ interface HeroProps {
 
 const Hero: FC<HeroProps> = ({ isOpen, handleOpenBookNow, handleCloseBookNow }) => {
   const textRef = useRef<HTMLSpanElement>(null);
-  const eraserRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const text = 'KowTattys';
+    const textArray = text.split('');
     
-    const textTimeline = gsap.timeline({ repeat: -1 });
-    const eraserTimeline = gsap.timeline({ repeat: -1 });
+    const textTimeline = gsap.timeline({ 
+      repeat: -1,
+      onRepeat: () => {
+        // Reset the text completely before starting again
+        gsap.set(textRef.current, { text: '' });
+      }
+    });
 
-    // Text typing animation
-    textTimeline
-      .to(textRef.current, {
-        duration: 2,
-        text: text,
-        ease: "none"
-      })
-      .to({}, { duration: 3 }); // Pause at full text
+    // Typing animation with varying character speeds
+    textArray.forEach((char, index) => {
+      textTimeline.to(textRef.current, {
+        duration: index === textArray.length - 1 ? 0.7 : 0.3, // Slower last character
+        text: textArray.slice(0, index + 1).join(''),
+        ease: "power1.inOut"
+      });
+    });
 
-    // Eraser animation
-    if (eraserRef.current) {
-      eraserTimeline
-        .fromTo(
-          eraserRef.current, 
-          { 
-            left: '-170%',
-            opacity: 1
-          },
-          {
-            duration: 2,
-            left: '-30%',
-            ease: "power1.out",
-            onComplete: () => {
-              // Reset text when eraser animation completes
-              if (textRef.current) {
-                gsap.set(textRef.current, { text: '' });
-              }
-            }
-          }
-        );
-    }
+    // Pause at full text
+    textTimeline.to({}, { duration: 2 });
 
-    // Sync timelines
-    textTimeline.sync(eraserTimeline);
+    // Erasing animation with a more natural feel
+    textTimeline.to(textRef.current, {
+      duration: 1,
+      text: '',
+      ease: "power2.inOut",
+      onStart: () => {
+        // Add a subtle fade-out effect
+        if (containerRef.current) {
+          gsap.to(containerRef.current, {
+            opacity: 0.7,
+            scale: 0.98,
+            duration: 1,
+            ease: "power2.inOut"
+          });
+        }
+      },
+      onComplete: () => {
+        // Reset container styles
+        if (containerRef.current) {
+          gsap.to(containerRef.current, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            ease: "power1.out"
+          });
+        }
+      }
+    });
 
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div 
-        className="relative w-[400px] mx-auto my-[125px] p-2 overflow-hidden"
-        style={{ position: 'relative' }}
-      >
+    <div 
+      ref={containerRef}
+      className="flex flex-col items-center justify-center h-screen transition-all duration-300"
+    >
+      <div className='typewriter-container matemasie-regular'>
         <span 
           ref={textRef} 
-          className="relative z-[1] text-5xl font-bold text-[#c89d7c]"
-        />
-        <div 
-          ref={eraserRef}
-          className="absolute left-[-30%] top-2 h-full w-[130%] rounded-[135px/65px] z-[2]"
-          style={{
-            boxShadow: '0 0 100px 50px rgba(255, 255, 255, .8)',
-            background: 'radial-gradient(#fff, rgba(255, 255, 255, .95))',
-            borderRadius: '135px/65px'
-          }}
+          className="text-5xl font-bold text-[#c89d7c] inline-block"
         />
       </div>
       <BookNowButton handleOpenBookNow={handleOpenBookNow} />
