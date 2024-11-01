@@ -38,7 +38,7 @@ const Hero: FC<HeroProps> = ({ isOpen, handleOpenBookNow, handleCloseBookNow }) 
     });
 
     // Pause at full text
-    textTimeline.to({}, { duration: 2 });
+    textTimeline.to({}, { duration: 4 });
 
     // Erasing animation with a more natural feel
     textTimeline.to(textRef.current, {
