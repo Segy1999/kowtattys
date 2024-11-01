@@ -32,7 +32,7 @@ const Hero: FC<HeroProps> = ({ isOpen, handleOpenBookNow, handleCloseBookNow }) 
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className='typewriter-container montserrat'>
+      <div className='typewriter-container matemasie-regular'>
         <span ref={textRef} className="text-7xl font-bold" />
       </div>
       <BookNowButton handleOpenBookNow={handleOpenBookNow} />

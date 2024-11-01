@@ -23,7 +23,7 @@ const Portfolio: FC = () => {
   }, [images.length]);
 
   return (
-    <div id="portfolio" className="section max-w-4xl mx-auto my-20 bg-[#c89d7c] p-6 rounded-lg shadow-md oswald ">
+    <div id="portfolio" className="section max-w-4xl mx-auto my-20 bg-[#c89d7c] p-6 rounded-lg shadow-md playwrite-dk-loopet ">
       <h2 className="text-4xl text-white text-center mb-4">Portfolio</h2>
       <div className="slideshow-container relative overflow-hidden">
         <div 
