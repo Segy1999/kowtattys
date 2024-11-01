@@ -13,9 +13,9 @@ interface FormData {
 }
 
 interface BookNowFormProps {
-  isOpen: boolean;  // Add isOpen prop
+  isOpen: boolean;  
   onClose: () => void;
-  onSubmit?: (data: FormData) => void;  // Made optional since it might not always be needed
+  onSubmit?: (data: FormData) => void;  
 }
 
 const BookNowForm: React.FC<BookNowFormProps> = ({ isOpen, onClose, onSubmit }) => {

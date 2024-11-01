@@ -1,4 +1,3 @@
-// components/AboutUs.tsx
 import React, { FC } from 'react';
 
 const AboutUs: FC = () => {

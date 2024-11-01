@@ -1,159 +1,88 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/about-us', label: 'About Us' },
+  { path: '/policies', label: 'Policies' },
+  { path: '/contact-us', label: 'Contact Us' },
+  { path: '/portfolio', label: 'Portfolio' },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('');
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleLinkClick = (link: React.SetStateAction<string>) => {
-    setActiveLink(link);
+  const handleLinkClick = (path: string) => {
+    setActiveLink(path);
+    setIsOpen(false);
   };
 
   return (
-    <nav className="text-4xl oswald bg-primary text-white py-4 md:py-6 lg:py-8 !bg-primary font-bold">
-      <div className="container mx-auto flex justify-between md:flex-row flex-col !justify-between">
-        <ul className="flex items-center space-x-4 md:space-x-8 lg:space-x-12 !space-x-12">
-          <li>
-            <Link
-              to="/"
-              className={`hover:text-gray-300 transition duration-300 ${
-                activeLink === '/' ? 'text-gray-300' : ''
-              }`}
-              onClick={() => handleLinkClick('/')}
+    <nav className="relative bg-[#C89D7C] text-white montserrat shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex flex-1 justify-between items-center">
+            <div className="flex-1 flex justify-between">
+              {navLinks.map(({ path, label }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`text-lg font-semibold transition-all duration-200 hover:text-gray-200 relative group ${
+                    activeLink === path ? 'text-gray-200' : ''
+                  }`}
+                  onClick={() => handleLinkClick(path)}
+                >
+                  {label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-200 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-expanded="false"
             >
-              Home
-            </Link>
-          </li>
-          <li>
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <X className="block h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="block h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          isOpen
+            ? 'max-h-screen opacity-100 visible'
+            : 'max-h-0 opacity-0 invisible'
+        }`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-primary shadow-lg">
+          {navLinks.map(({ path, label }) => (
             <Link
-              to="/about-us"
-              className={`hover:text-gray-300 transition duration-300 ${
-                activeLink === '/about-us' ? 'text-gray-300' : ''
+              key={path}
+              to={path}
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                activeLink === path
+                  ? 'bg-primary-dark text-white'
+                  : 'hover:bg-primary-dark hover:text-white'
               }`}
-              onClick={() => handleLinkClick('/about-us')}
+              onClick={() => handleLinkClick(path)}
             >
-              About Us
+              {label}
             </Link>
-          </li>
-          <li>
-            <Link
-              to="/policies"
-              className={`hover:text-gray-300 transition duration-300 ${
-                activeLink === '/policies' ? 'text-gray-300' : ''
-              }`}
-              onClick={() => handleLinkClick('/policies')}
-            >
-              Policies
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact-us"
-              className={`hover:text-gray-300 transition duration-300 ${
-                activeLink === '/contact-us' ? 'text-gray-300' : ''
-              }`}
-              onClick={() => handleLinkClick('/contact-us')}
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/portfolio"
-              className={`hover:text-gray-300 transition duration-300 ${
-                activeLink === '/portfolio' ? 'text-gray-300' : ''
-              }`}
-              onClick={() => handleLinkClick('/portfolio')}
-            >
-              Portfolio
-            </Link>
-          </li>
-        </ul>
-        <button
-          className="md:hidden flex justify-center items-center w-8 h-8 bg-primary rounded-full"
-          onClick={handleToggle}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-        <div
-          className={`${
-            isOpen ? 'block' : 'hidden'
-          } md:hidden absolute top-full left-0 w-full bg-primary p-4`}
-        >
-          <ul>
-            <li>
-              <Link
-                to="/"
-                className={`hover:text-gray-300 transition duration-300 ${
-                  activeLink === '/' ? 'text-gray-300' : ''
-                }`}
-                onClick={() => handleLinkClick('/')}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about-us"
-                className={`hover:text-gray-300 transition duration-300 ${
-                  activeLink === '/about-us' ? 'text-gray-300' : ''
-                }`}
-                onClick={() => handleLinkClick('/about-us')}
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/policies"
-                className={`hover:text-gray-300 transition duration-300 ${
-                  activeLink === '/policies' ? 'text-gray-300' : ''
-                }`}
-                onClick={() => handleLinkClick('/policies')}
-              >
-                Policies
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact-us"
-                className={`hover:text-gray-300 transition duration-300 ${
-                  activeLink === '/contact-us' ? 'text-gray-300' : ''
-                }`}
-                onClick={() => handleLinkClick('/contact-us')}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/portfolio"
-                className={`hover:text-gray-300 transition duration-300 ${
-                  activeLink === '/portfolio' ? 'text-gray-300' : ''
-                }`}
-                onClick={() => handleLinkClick('/portfolio')}
-              >
-                Portfolio
-              </Link>
-            </li>
-          </ul>
+          ))}
         </div>
       </div>
     </nav>
