@@ -38,7 +38,7 @@ const App: FC = () => {
                       handleCloseBookNow={handleCloseBookNow}
                     />
                     <BookNowForm isOpen={isBookNowOpen} onClose={handleCloseBookNow} />
-                    <Portfolio />
+                    
                   </>
                 }
               />
