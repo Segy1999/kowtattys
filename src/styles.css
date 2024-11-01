@@ -20,7 +20,7 @@
 /* Background Image */
 .background {
   background-color: black;
-  @apply h-screen w-full bg-cover bg-center;
+  @apply h-full w-full bg-cover bg-center;
 }
 
 .background img {
