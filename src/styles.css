@@ -19,7 +19,7 @@
 
 /* Background Image */
 .background {
-  background-color: black-smoke;
+  background-color: gray-500/75;
   @apply h-screen w-full bg-cover bg-center;
 }
 
