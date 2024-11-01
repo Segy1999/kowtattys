@@ -46,7 +46,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-[#c89d7c]-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -68,15 +68,15 @@ const Navbar = () => {
             : 'max-h-0 opacity-0 invisible'
         }`}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-primary shadow-lg">
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-[#c89d7c] shadow-lg">
           {navLinks.map(({ path, label }) => (
             <Link
               key={path}
               to={path}
               className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                 activeLink === path
-                  ? 'bg-primary-dark text-white'
-                  : 'hover:bg-primary-dark hover:text-white'
+                  ? 'bg-[#c89d7c]-dark text-white'
+                  : 'hover:bg-[#c89d7c]-dark hover:text-white'
               }`}
               onClick={() => handleLinkClick(path)}
             >
