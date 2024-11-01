@@ -22,7 +22,7 @@ const Hero: FC<HeroProps> = ({ isOpen, handleOpenBookNow, handleCloseBookNow }) 
 
     textArray.forEach((char, index) => {
       textTimeline.to(textRef.current, {
-        duration: 0.1,
+        duration: 0.5,
         text: textArray.slice(0, index + 1).join(''),
       });
     });
