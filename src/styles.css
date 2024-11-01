@@ -162,13 +162,13 @@
 /* Media queries for different screen sizes */
 @media (max-width: 768px) {
   .typewriter-container {
-    margin-bottom: 10px; /* smaller margin for smaller screens */
+    margin-bottom: 30px; /* smaller margin for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
   .typewriter-container {
-    margin-bottom: 5px; /* even smaller margin for very small screens */
+    margin-bottom: 15px; /* even smaller margin for very small screens */
   }
 }
 
